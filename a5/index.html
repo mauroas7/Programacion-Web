@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script language= "JavaScript">
+        const numeros = [3, 6, 9, 12, 15, 18];
+
+        const pares = numeros
+            .filter(n => n % 2 === 0)
+            .map(n => n ** 3);
+        console.log(pares);
+
+
+        const empleados = [
+            {nombre: "Ana", departamento: "Ventas"},
+            {nombre: "Luis", departamento: "IT"},
+            {nombre: "Marta", departamento: "Ventas"},
+            {nombre: "Pedro", departamento: "IT"},
+            {nombre: "Sofia", departamento: "Marketing"}
+        ];
+
+        const agrupados = empleados.reduce((m, {departamento}) => m.set(departamento, (m.get(departamento) || 0) +1), 
+        new Map());
+ 
+        console.log(agrupados);
+
+
+        const arreglo = ["uno", "dos", "tres", "cuatro", "uno"]
+        
+        const repetidos = arreglo.reduce((m, numero) => {m[numero] = (m[numero] || 0) + 1 ; 
+        return m;
+        }, {});
+        
+        console.log(repetidos);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
