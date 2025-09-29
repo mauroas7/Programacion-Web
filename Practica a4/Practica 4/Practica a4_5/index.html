@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Vehículos</title>
+</head>
+<body>
+    <script>
+        
+// Clase RNA
+class RNA {
+  constructor(nombre, apellido, dni) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.dni = dni;
+  }
+
+  mostrarDatos() {
+    return `${this.nombre} ${this.apellido} - DNI: ${this.dni}`;
+  }
+}
+
+// Clase Titulo
+class Titulo {
+  constructor(nombreTitulo, añoObtencion) {
+    this.nombreTitulo = nombreTitulo;
+    this.añoObtencion = añoObtencion;
+  }
+
+  mostrarTitulo() {
+    return `${this.nombreTitulo} (${this.añoObtencion})`;
+  }
+}
+
+// Clase Vehiculo
+class Vehiculo {
+  #velocidad;
+  #marca;
+  #modelo;
+  #año;
+
+  constructor(marca, modelo, año, velocidad = 0) {
+    this.#marca = marca;
+    this.#modelo = modelo;
+    this.#año = año;
+    this.#velocidad = velocidad;
+  }
+
+  acelerar() {
+    this.#velocidad += 10;
+  }
+
+  frenar() {
+    this.#velocidad -= 10;
+  }
+
+  info() {
+    return `${this.#marca} ${this.#modelo} (${this.#año}) - Velocidad: ${this.#velocidad} km/h`;
+  }
+
+  compararVelocidad(otroVehiculo) {
+    return this.#velocidad > otroVehiculo.#velocidad
+      ? "Este vehículo es más rápido"
+      : "El otro vehículo es más rápido";
+  }
+}
+
+// Clase Auto
+class Auto extends Vehiculo {
+  constructor(marca, modelo, año, velocidad, cantPuertas) {
+    super(marca, modelo, año, velocidad);
+    this.cantPuertas = cantPuertas;
+  }
+
+  info() {
+    return `${super.info()} - Puertas: ${this.cantPuertas}`;
+  }
+}
+
+// Clase Motor
+class Motor {
+  constructor(tipo, caballos, descripcion) {
+    this.tipo = tipo;
+    this.caballos = caballos;
+    this.descripcion = descripcion;
+  }
+
+  mostrarMotor() {
+    return `${this.tipo} - ${this.caballos} HP - ${this.descripcion}`;
+  }
+}
+
+// Clase Rueda
+class Rueda {
+  constructor(marca, tamaño) {
+    this.marca = marca;
+    this.tamaño = tamaño;
+  }
+
+  mostrarRueda() {
+    return `${this.marca} - ${this.tamaño}"`;
+  }
+}
+
+// Clase Remolque
+class Remolque {
+  constructor(capacidadCarga) {
+    this.capacidadCarga = capacidadCarga;
+  }
+
+  mostrarRemolque() {
+    return `Capacidad de carga: ${this.capacidadCarga} kg`;
+  }
+}
+
+// Clase Frigorifico
+class Frigorifico extends Remolque {
+  constructor(capacidadCarga, temperaturaMinima) {
+    super(capacidadCarga);
+    this.temperaturaMinima = temperaturaMinima;
+  }
+
+  mostrarFrigorifico() {
+    return `${super.mostrarRemolque()} - Temp. mínima: ${this.temperaturaMinima}°C`;
+  }
+}
+
+// Clase Camion
+class Camion extends Vehiculo {
+  constructor(marca, modelo, año, velocidad, tipoCarga) {
+    super(marca, modelo, año, velocidad);
+    this.tipoCarga = tipoCarga;
+  }
+
+  info() {
+    return `${super.info()} - Tipo de carga: ${this.tipoCarga}`;
+  }
+}
+
+// Clase Fábrica
+class Fabrica {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.vehiculosFabricados = [];
+  }
+
+  fabricarVehiculo(vehiculo) {
+    this.vehiculosFabricados.push(vehiculo);
+  }
+
+  mostrarVehiculos() {
+    return this.vehiculosFabricados.map(v => v.info()).join("\n");
+  }
+}
+
+// Clase Concesionario
+class Concesionario {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.vehiculos = [];
+  }
+
+  agregarVehiculo(vehiculo) {
+    this.vehiculos.push(vehiculo);
+  }
+
+  mostrarInventario() {
+    return this.vehiculos.map(v => v.info()).join("\n");
+  }
+}
+
+    console.log("=== SISTEMA DE VEHÍCULOS ===\n")
+
+    //Crear un auto
+    const auto1 = new Auto("Toyota", "Corolla", 2020, 50, 4);
+    console.log("Datos del primer auto: \n" + auto1.info());
+    const auto2 = new Auto("BMW", "A4", 2021, 60, 4)
+
+    // Crear un concesionario y agregar el auto
+    const concesionario = new Concesionario("Yacopini");
+    concesionario.agregarVehiculo(auto1);
+    concesionario.agregarVehiculo(auto2);
+    console.log("Datos de todos los autos: \n" + concesionario.mostrarInventario());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Práctica A4_3 - Arreglos en JavaScript</title>
+</head>
+<body>
+  <h1>Práctica A4_3 - Arreglos en JavaScript</h1>
+  <h2>Resultados en consola</h2>
+  <p>Abre la consola del navegador (F12 → pestaña "Console") para ver los resultados.</p>
+
+  <script>
+    // Ejercicio 1: Cubos de los números pares
+    const numeros = [3, 6, 9, 12, 15, 18];
+
+    const cubosPares = numeros
+      .filter(num => num % 2 === 0)
+      .map(num => Math.pow(num, 3));
+
+    console.log("Cubos de los pares:", cubosPares);
+
+    // Ejercicio 2: Agrupar empleados por departamento
+    const empleados = [
+      { nombre: "Ana", departamento: "Ventas" },
+      { nombre: "Luis", departamento: "IT" },
+      { nombre: "Marta", departamento: "Ventas" },
+      { nombre: "Pedro", departamento: "IT" },
+      { nombre: "Sofía", departamento: "Marketing" }
+    ];
+
+    const agrupados = empleados.reduce((acc, empleado) => {
+      const depto = empleado.departamento;
+      if (!acc[depto]) {
+        acc[depto] = [];
+      }
+      acc[depto].push(empleado.nombre);
+      return acc;
+    }, {});
+
+    console.log("Empleados agrupados:", agrupados);
+  </script>
+</body>
+</html>

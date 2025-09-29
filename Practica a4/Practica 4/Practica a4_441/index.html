@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos en JavaScript</title>
+</head>
+<body>
+    <script>
+        // Objeto Libro
+        const Libro = {
+            titulo: "El señor de los anillos",
+            autor: "J. R. R. Tolkien",
+            anio: 1954,
+
+            descripcion() {
+                console.log("Título: " + this.titulo +
+                            ", Autor: " + this.autor +
+                            ", Año: " + this.anio);
+            }
+        };
+
+        Libro.descripcion();
+
+        // Objeto cuentaBancaria
+        const cuentaBancaria = {
+            saldo: 1000,
+            titular: "Andrés",
+
+            depositar(monto) {
+                this.saldo += monto;
+                console.log("Depósito realizado. Nuevo saldo: $" + this.saldo);
+            },
+
+            retirar(monto) {
+                if (monto <= this.saldo) {
+                    this.saldo -= monto;
+                    console.log("Retiro realizado. Nuevo saldo: $" + this.saldo);
+                } else {
+                    console.log("Fondos insuficientes. Saldo actual: $" + this.saldo);
+                }
+            }
+        };
+
+        cuentaBancaria.depositar(500);
+        cuentaBancaria.retirar(200);
+        cuentaBancaria.retirar(2000);
+
+        // Objeto Rectangulo
+        const Rectangulo = {
+            ancho: 5,
+            alto: 3,
+
+            area() {
+                return this.ancho * this.alto;
+            },
+
+            perimetro() {
+                return 2 * (this.ancho + this.alto);
+            }
+        };
+
+        console.log("Área del rectángulo: " + Rectangulo.area());
+        console.log("Perímetro del rectángulo: " + Rectangulo.perimetro());
+    </script>
+</body>
+</html>

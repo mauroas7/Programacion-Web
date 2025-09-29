@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const usuarios = [
+            { nombre: "Juan Perez", clave: "secreta" },
+            { nombre: "Maria Lopez", clave: "1234" },
+];
+
+const capitalizar = (s) =>
+  s.toLowerCase()
+   .split(/\s+/)
+   .map(w => (w ? w[0].toUpperCase() + w.slice(1) : ""))
+   .join(" ");
+
+const shiftPlus1 = (s) => [...s].map(ch => String.fromCharCode(ch.charCodeAt(0) + 1)).join("");
+const shiftMinus1 = (s) => [...s].map(ch => String.fromCharCode(ch.charCodeAt(0) - 1)).join("");
+
+const resultado = usuarios.map(u => ({
+  ...u,
+  nombre: capitalizar(u.nombre),
+  clave: shiftPlus1(u.clave),
+}));
+
+console.log(resultado);
+// console.log(shiftMinus1(resultado[0].clave));
+    </script>
+</body>
+</html>

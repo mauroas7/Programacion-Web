@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica a6</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h2>Enviar datos al Servlet</h2>
+<form id="formUsuario">
+    Nombre: <input type="text" name="nombre" id="nombre"><br><br>
+    Edad: <input type="number" name="edad" id="edad"><br><br>
+    <button type="submit">Enviar</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+    $(document).ready(function () {
+        $("#formUsuario").submit(function (event) {
+            event.preventDefault();
+            $.post("UsuarioServlet", {
+                nombre: $("#nombre").val(),
+                edad: $("#edad").val()
+            }, function (data) {
+                $("#resultado").html(data);
+            });
+        });
+    });
+</script>
+</body>
+</html>
