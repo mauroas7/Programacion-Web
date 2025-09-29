@@ -1,9 +1,0 @@
-#tareas {
-    padding: 8px;
-    margin: 5px;
-    border: 1px solid #000;
-    align-items:center;
-}
-
-#tareas li.completada { background-color: green; text-decoration: line-through;}
-
